@@ -1,0 +1,403 @@
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400 700;
+  src: url("fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #9d8189;
+  --bg-container: #ced5de;
+  --bg-tasklist: #e5d4ca;
+  --button: #4c888d;
+  --button-hovered: #2a767b;
+  --clr-tasklist: #725d63;
+  --clr-button: #f0f0f0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-image: url("images/Bg_image.png");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0 auto;
+}
+
+.container {
+  background-color: var(--bg-container);
+  color: var(--clr-tasklist);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  width: 19rem;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+}
+
+.priority {
+  display: inline;
+}
+
+label {
+  display: inline;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none; /* Remove the default focus outline */
+  border: 2px solid var(--button-hovered); /* Optional: Add a custom focus border */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Optional: Add a custom focus shadow */
+}
+
+input,
+select {
+  width: calc(100% - 10rem);
+  padding: 0.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#taskInput {
+  width: calc(100% - 1.5rem);
+}
+
+#addTaskButton {
+  padding: 10px;
+  background-color: var(--button);
+  color: var(--clr-button);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#addTaskButton:hover {
+  background-color: var(--button-hovered);
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 27rem;
+  margin-top: 1rem;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-tasklist);
+  color: var(--clr-tasklist);
+  font-weight: 700;
+  padding: 0.8rem;
+  margin-bottom: 0.6rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.task-item.completed span {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.task-item span,
+.task-item input[type="checkbox"],
+.task-item button {
+  margin: 0 0.4rem;
+}
+
+.task-item input[type="checkbox"] {
+  flex: 0;
+  accent-color: var(--button-hovered);
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #d9534f;
+  transition: transform 0.3s ease; /* Add transition for scaling */
+}
+
+.delete-btn:hover {
+  color: #c9302c;
+  background: none;
+  transform: scale(1.1); /* Scale the button on hover */
+  border-radius: 0.3rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 1rem; /* Adjust the spacing as needed */
+  transition: transform 0.3s ease; /* Add transition for scaling */
+}
+
+.icon-button:hover {
+  transform: scale(1.3); /* Scale the button on hover */
+  background: none; /* Ensure no background color on hover */
+  border-radius: 0.3rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.icon-button svg {
+  vertical-align: middle;
+}
+
+.saveTasks {
+  display: flex;
+  justify-content: space-around;
+}
+
+.socials-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+#social-container {
+  position: fixed;
+  bottom: 5.3rem;
+  right: 7.6rem;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+#click-hint {
+  font-size: 0.9rem;
+  color: var(--clr-tasklist);
+  margin-left: 0.5rem;
+  white-space: nowrap;
+}
+
+.socials-menu {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.active > .socials-menu {
+  opacity: 1;
+}
+
+#share-button {
+  position: fixed;
+  bottom: 4.6rem;
+  right: 4.6rem;
+  width: 3rem;
+  height: 3rem;
+  z-index: 2;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  transition: all 0.4s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+}
+
+#share-button img {
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: cover;
+}
+
+.active #share-button img {
+  transform: scale(1.03);
+}
+
+.social {
+  position: fixed;
+  list-style: none;
+  bottom: 5rem;
+  right: 5rem;
+  display: grid;
+  cursor: pointer;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  outline: 2px solid white;
+  outline-offset: 3px;
+  transition: all 0.5s ease-in-out;
+}
+
+.social img {
+  width: 2rem; /* Adjust size as needed */
+  height: 2rem; /* Adjust size as needed */
+  display: block;
+}
+
+.active .social:nth-child(1) {
+  transform: translate(-30px, -45px);
+}
+
+.active .social:nth-child(2) {
+  transform: translate(-50px, 12px);
+}
+
+.active .social:nth-child(3) {
+  transform: translate(30px, -45px);
+}
+
+.active .social:nth-child(4) {
+  transform: translate(50px, 12px);
+}
+
+.active .social:nth-child(5) {
+  transform: translateY(50px);
+}
+
+@media (max-width: 360px) {
+  .container {
+    width: 90%;
+    padding: 0.8rem;
+  }
+
+  input,
+  select,
+  button {
+    width: calc(100% - 1rem);
+    padding: 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .icon-button {
+    margin-top: 0.5rem;
+  }
+
+  .task-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem;
+  }
+
+  .task-item span,
+  .task-item input[type="checkbox"],
+  .task-item button {
+    margin: 0.2rem 0;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  label,
+  input,
+  select,
+  button {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 360px) {
+  button:hover,
+  .icon-button:hover,
+  .delete-btn:hover {
+    transform: none; /* Disable the scale transform */
+    box-shadow: none; /* Disable the box shadow */
+  }
+
+  .task-item input[type="checkbox"] {
+    background-color: transparent !important; /* Ensure hover background is transparent */
+    transform: none !important; /* Disable hover transform */
+    box-shadow: none !important; /* Disable hover box shadow */
+  }
+}
+
+@media (max-width: 680px) {
+  #social-container {
+    position: static; /* Make sure it's within the flow of the document */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;/* Adjust the spacing as needed */
+    width: 100%;
+  }
+
+  #click-hint {
+    margin: 0 0 0.5rem 0; /* Space between text and image */
+    text-align: center;
+  }
+
+  #share-button {
+    position: static;
+    margin: 0.5rem auto; /* Center the button initially */
+    transition: all 0.4s ease-in-out;
+  }
+
+  .social {
+    position: static; /* Make sure it's within the flow of the document */
+    margin: 0.7rem; /* Adjust margin as needed */
+    display: inline-block; /* Display inline to align them properly */
+    justify-content: center;
+    align-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .socials-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Wrap the items to the next line if needed */
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .social img {
+    width: 1.5rem; /* Adjust size as needed */
+    height: 1.5rem; /* Adjust size as needed */
+    display: block;
+  }
+
+  .active .social:nth-child(1),
+  .active .social:nth-child(2),
+  .active .social:nth-child(3),
+  .active .social:nth-child(4),
+  .active .social:nth-child(5) {
+    transform: none; /* Reset transform for mobile */
+  }
+
+  .icon-button,
+  .task-item input[type="checkbox"],
+  .task-item button {
+    transform: none; /* Reset transforms on hover */
+    box-shadow: none; /* Reset shadows on hover */
+  }
+}

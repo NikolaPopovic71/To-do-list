@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>To-Do List</h2>
+      <input
+        type="text"
+        id="taskInput"
+        placeholder="Add a new task..."
+        required
+      />
+      <div class="priority">
+        <label for="priorityInput">Choose a priority:</label>
+        <select name="Priority" id="priorityInput">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+      <div class="time">
+        <label for="timeInput">Choose a time:</label>
+        <input
+          type="number"
+          id="timeInput"
+          placeholder="Minutes"
+          step="1"
+          min="1"
+          max="1440"
+        />
+      </div>
+      <button id="addTaskButton">Add Task</button>
+
+      <div class="saveTasks">
+        <button
+          id="downloadButton"
+          class="icon-button"
+          name="download"
+          title="download"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-download"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#9d8189"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+            <path d="M7 11l5 5l5 -5" />
+            <path d="M12 4l0 12" />
+          </svg>
+        </button>
+
+        <button id="shareButton" class="icon-button" name="share" title="share">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-share"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#9d8189"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M6 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+            <path d="M18 6m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+            <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+            <path d="M8.7 10.7l6.6 -3.4" />
+            <path d="M8.7 13.3l6.6 3.4" />
+          </svg>
+        </button>
+
+        <button id="printButton" class="icon-button" name="print" title="print">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-printer"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#9d8189"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M17 17h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-14a2 2 0 0 0 -2 2v4a2 2 0 0 0 2 2h2"
+            />
+            <path d="M17 9v-4a2 2 0 0 0 -2 -2h-6a2 2 0 0 0 -2 2v4" />
+            <path
+              d="M7 13m0 2a2 2 0 0 1 2 -2h6a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-6a2 2 0 0 1 -2 -2z"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <ul id="taskList" class="task-list"></ul>
+    <div id="socials-wrapper" class="socials-wrapper">
+      <div id="social-container">
+        <span id="click-hint">Click the image to get contacts</span>
+        <button id="share-button">
+          <img
+            src="images/ponITech - shorten logo_without_n.svg"
+            alt="logo"
+            class="logo"
+          />
+        </button>
+      </div>
+
+      <ul class="socials-menu">
+        <li class="social">
+          <a
+            href="https://www.instagram.com/ponitech2024/"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Instagram-Home"
+          >
+            <img src="images/ins_line.svg" alt="Instagram" />
+          </a>
+        </li>
+        <li class="social">
+          <a
+            href="https://x.com/NikolaP_itech"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="X-Home"
+          >
+            <img src="images/social_x_line.svg" alt="Twitter" />
+          </a>
+        </li>
+        <li class="social" title="GitHub">
+          <a
+            href="https://github.com/NikolaPopovic71"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="GitHub-Home"
+          >
+            <img src="images/github_line.svg" alt="GitHub" />
+          </a>
+        </li>
+        <li class="social">
+          <a
+            href="https://www.youtube.com/channel/UCxb4I-V_DoYuVTsV-hU1PoQ"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="YouTube-Home"
+          >
+            <img src="images/youtube_line.svg" alt="Youtube" />
+          </a>
+        </li>
+        <li class="social">
+          <a
+            href="mailto:nikolap.itech@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Email"
+          >
+            <img src="images/email_line.svg" alt="Email" />
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
